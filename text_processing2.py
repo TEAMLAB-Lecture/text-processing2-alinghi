@@ -71,9 +71,12 @@ def to_camel_case(underscore_str):
             "alreadyCamel"
     """
     camelcase_str = (re.sub("[_]+", " ", underscore_str)
-                     ).strip().lower().split()
+                     ).strip().split()
+    if len(camelcase_str) == 1:
+        return "".join(camelcase_str)
     for i in range(len(camelcase_str)):
         if i == 0:
+            camelcase_str[i] = camelcase_str[i].lower()
             continue
-        camelcase_str[i] = camelcase_str[i].capitalize()
+        camelcase_str[i] = camelcase_str[i].lower().capitalize()
     return "".join(camelcase_str)
