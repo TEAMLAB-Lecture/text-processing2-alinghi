@@ -71,7 +71,8 @@ def to_camel_case(underscore_str):
             >>> tp2.to_camel_case(underscore_str3)
             "alreadyCamel"
     """
-    if not re.match("/s+", underscore_str):
+    m = re.match("/s+", underscore_str)
+    if m:
         return underscore_str
     camelcase_str = (re.sub("[_]+", " ", underscore_str)
                      ).strip().split()
